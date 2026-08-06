@@ -1,0 +1,775 @@
+{
+    "@context": [
+        "https://w3id.org/skg-if/context/skg-if.json",
+        {
+            "@base": "https://w3id.org/skg-if/sandbox/ehri/"
+        }
+    ],
+    "@graph": [
+        {
+            "entity_type": "product",
+            "local_identifier": "https://blog.ehri-project.eu/2026/07/30/secret-notes-from-austrian-resistance/",
+            "identifiers": [
+                {
+                    "scheme": "doi",
+                    "value": "10.82169/0uvs-h85n"
+                },
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/2026/07/30/secret-notes-from-austrian-resistance/"
+                }
+            ],
+            "product_type": "literature",
+            "titles": {
+                "en": "‘Since the collar is stiff, no one will feel a small sewn-in note’: Secret Notes from Austrian Resistance Members in Gestapo Captivity"
+            },
+            "abstracts": {
+                "en": "Elfriede Hartmann was 21 years old and a leading member of the Communist Youth League when she was arrested by the Gestapo in Vienna on 24 February 1942. Accused of producing and distributing ‘anti-State propaganda’ and preparing ‘acts of sabotage’, she was held in custody until trial on 22 September 1943, when she was sentenced to death."
+            },
+            "topics": [
+                {
+                    "term": "https://blog.ehri-project.eu/tag/nazi-justice-system/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                },
+                {
+                    "term": "https://blog.ehri-project.eu/tag/prisons/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                },
+                {
+                    "term": "https://blog.ehri-project.eu/tag/resistance/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                }
+            ],
+            "contributions": [
+                {
+                    "by": "https://blog.ehri-project.eu/author/barnabas_balint/",
+                    "role": "author",
+                    "rank": 1
+                },
+                {
+                    "by": "https://ror.org/00zsk2t64",
+                    "role": "publisher"
+                }
+            ],
+            "manifestations": [
+                {
+                    "type": {
+                        "class": "http://purl.org/spar/fabio/BlogPost",
+                        "labels": {
+                            "en": "blog post"
+                        },
+                        "defined_in": "http://purl.org/spar/fabio"
+                    },
+                    "identifiers": [
+                        {
+                            "scheme": "doi",
+                            "value": "10.82169/0uvs-h85n"
+                        }
+                    ],
+                    "dates": {
+                        "publication": "2026-07-30T08:39:47+00:00"
+                    },
+                    "access_rights": {
+                        "status": "open",
+                        "description": "Freely readable on the EHRI Document Blog. No reuse licence is stated; the blog carries the notice © 2015-2026 EHRI Consortium."
+                    },
+                    "url": "https://blog.ehri-project.eu/2026/07/30/secret-notes-from-austrian-resistance/",
+                    "biblio": {
+                        "in": "https://blog.ehri-project.eu",
+                        "hosting_data_source": "https://blog.ehri-project.eu#datasource"
+                    }
+                }
+            ]
+        },
+        {
+            "entity_type": "product",
+            "local_identifier": "https://blog.ehri-project.eu/2026/06/29/the-extermination-of-jews-in-the-kalinindorf/",
+            "identifiers": [
+                {
+                    "scheme": "doi",
+                    "value": "10.82169/3d43-gtxa"
+                },
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/2026/06/29/the-extermination-of-jews-in-the-kalinindorf/"
+                }
+            ],
+            "product_type": "literature",
+            "titles": {
+                "en": "The Extermination of Jews in the Kalinindorf Jewish National Raion of 1941",
+                "ru": "ИСТРЕБЛЕНИЕ ЕВРЕЕВ В КАЛИНИНДОРФСКОМ ЕВРЕЙСКОМ НАЦИОНАЛЬНОМ РАЙОНЕ ОСЕНЬЮ 1941 г."
+            },
+            "abstracts": {
+                "en": "In 1927 the Kalinindorf Raion was established as a Jewish national raion, created from parts of the Beryslav and Snihurivka Raions of Mykolaïv Oblast, in the Ukrainian SSR. It was the first Jewish national raion not only in Ukraine, but in the USSR as a whole. Initially, the raion included seven village soviets."
+            },
+            "topics": [
+                {
+                    "term": "https://blog.ehri-project.eu/tag/massacres/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                },
+                {
+                    "term": "https://blog.ehri-project.eu/tag/perpetrator/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                },
+                {
+                    "term": "https://blog.ehri-project.eu/tag/ukraine/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                }
+            ],
+            "contributions": [
+                {
+                    "by": "https://blog.ehri-project.eu/author/alexander-kruglov/",
+                    "role": "author",
+                    "rank": 1,
+                    "declared_affiliations": [
+                        "https://portal.ehri-project.eu/institutions/ua-003297"
+                    ]
+                },
+                {
+                    "by": "https://ror.org/00zsk2t64",
+                    "role": "publisher"
+                }
+            ],
+            "manifestations": [
+                {
+                    "type": {
+                        "class": "http://purl.org/spar/fabio/BlogPost",
+                        "labels": {
+                            "en": "blog post"
+                        },
+                        "defined_in": "http://purl.org/spar/fabio"
+                    },
+                    "identifiers": [
+                        {
+                            "scheme": "doi",
+                            "value": "10.82169/3d43-gtxa"
+                        }
+                    ],
+                    "dates": {
+                        "publication": "2026-06-29T12:13:31+00:00",
+                        "modified": "2026-06-29T12:18:08+00:00"
+                    },
+                    "access_rights": {
+                        "status": "open"
+                    },
+                    "url": "https://blog.ehri-project.eu/2026/06/29/the-extermination-of-jews-in-the-kalinindorf/",
+                    "biblio": {
+                        "in": "https://blog.ehri-project.eu",
+                        "hosting_data_source": "https://blog.ehri-project.eu#datasource"
+                    }
+                },
+                {
+                    "type": {
+                        "class": "http://purl.org/spar/fabio/BlogPost",
+                        "labels": {
+                            "en": "blog post (Russian version)"
+                        },
+                        "defined_in": "http://purl.org/spar/fabio"
+                    },
+                    "identifiers": [
+                        {
+                            "scheme": "doi",
+                            "value": "10.82169/nyen-609n"
+                        }
+                    ],
+                    "dates": {
+                        "publication": "2026-06-29T12:15:53+00:00",
+                        "modified": "2026-06-29T12:19:00+00:00"
+                    },
+                    "access_rights": {
+                        "status": "open"
+                    },
+                    "url": "https://blog.ehri-project.eu/ru/2026/06/29/%d0%b8%d1%81%d1%82%d1%80%d0%b5%d0%b1%d0%bb%d0%b5%d0%bd%d0%b8%d0%b5-%d0%b5%d0%b2%d1%80%d0%b5%d0%b5%d0%b2-%d0%b2-%d0%ba%d0%b0%d0%bb%d0%b8%d0%bd%d0%b8%d0%bd%d0%b4%d0%be%d1%80%d1%84e/",
+                    "biblio": {
+                        "in": "https://blog.ehri-project.eu",
+                        "hosting_data_source": "https://blog.ehri-project.eu#datasource"
+                    }
+                }
+            ],
+            "relevant_organisations": [
+                "https://portal.ehri-project.eu/institutions/ru-003205"
+            ]
+        },
+        {
+            "entity_type": "product",
+            "local_identifier": "https://blog.ehri-project.eu/2026/05/29/a-child-is-born-harry-wapniarka/",
+            "identifiers": [
+                {
+                    "scheme": "doi",
+                    "value": "10.82169/6njj-cnqx"
+                },
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/2026/05/29/a-child-is-born-harry-wapniarka/"
+                }
+            ],
+            "product_type": "literature",
+            "titles": {
+                "en": "“A Child is Born”: The Mysterious Case of Harry Wapniarka"
+            },
+            "abstracts": {
+                "en": "My research on the events that took place in the notorious Vapniarka camp—known as the “Camp of Death” due to the exterminatory conditions imposed on the approximately 1200 deportees, including the toxic pea fodder (lathyrus sativus) provided as food by the Romanian authorities—actually began with a focus on the art produced as antifascist resistance during the Holocaust."
+            },
+            "topics": [
+                {
+                    "term": "https://blog.ehri-project.eu/tag/children/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                },
+                {
+                    "term": "https://blog.ehri-project.eu/tag/concentration-camps/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                },
+                {
+                    "term": "https://blog.ehri-project.eu/tag/ghetto/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                }
+            ],
+            "contributions": [
+                {
+                    "by": "https://blog.ehri-project.eu/author/olga-stefan/",
+                    "role": "author",
+                    "rank": 1,
+                    "declared_affiliations": [
+                        "https://ror.org/022kvet57"
+                    ]
+                },
+                {
+                    "by": "https://ror.org/00zsk2t64",
+                    "role": "publisher"
+                }
+            ],
+            "manifestations": [
+                {
+                    "type": {
+                        "class": "http://purl.org/spar/fabio/BlogPost",
+                        "labels": {
+                            "en": "blog post"
+                        },
+                        "defined_in": "http://purl.org/spar/fabio"
+                    },
+                    "identifiers": [
+                        {
+                            "scheme": "doi",
+                            "value": "10.82169/6njj-cnqx"
+                        }
+                    ],
+                    "dates": {
+                        "publication": "2026-05-29T11:41:11+00:00",
+                        "modified": "2026-05-29T11:47:27+00:00"
+                    },
+                    "access_rights": {
+                        "status": "open"
+                    },
+                    "url": "https://blog.ehri-project.eu/2026/05/29/a-child-is-born-harry-wapniarka/",
+                    "biblio": {
+                        "in": "https://blog.ehri-project.eu",
+                        "hosting_data_source": "https://blog.ehri-project.eu#datasource"
+                    }
+                }
+            ]
+        },
+        {
+            "entity_type": "product",
+            "local_identifier": "https://blog.ehri-project.eu/2026/04/30/scholars-path-through-fragmentation/",
+            "identifiers": [
+                {
+                    "scheme": "doi",
+                    "value": "10.82169/9pnj-35bm"
+                },
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/2026/04/30/scholars-path-through-fragmentation/"
+                }
+            ],
+            "product_type": "literature",
+            "titles": {
+                "en": "Holocaust Studies in Ukraine: A Scholar’s Path through Fragmentation"
+            },
+            "abstracts": {
+                "en": "I have been involved in Holocaust Studies since the early 2000s, when the field was only beginning to take shape in Ukraine. Rather than a conventional academic trajectory, my entry into Holocaust research did not follow a linear or institutionally guided path, but unfolded through fragmented encounters, external frameworks, and improvised research practices."
+            },
+            "topics": [
+                {
+                    "term": "https://blog.ehri-project.eu/tag/historiography/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                },
+                {
+                    "term": "https://blog.ehri-project.eu/tag/ukraine/",
+                    "provenance": [
+                        {
+                            "associated_with": "https://ror.org/00zsk2t64",
+                            "trust": 1.0
+                        }
+                    ]
+                }
+            ],
+            "contributions": [
+                {
+                    "by": "https://blog.ehri-project.eu/author/hanna-abakunova/",
+                    "role": "author",
+                    "rank": 1,
+                    "declared_affiliations": [
+                        "https://ror.org/0160cpw27"
+                    ]
+                },
+                {
+                    "by": "https://ror.org/00zsk2t64",
+                    "role": "publisher"
+                }
+            ],
+            "manifestations": [
+                {
+                    "type": {
+                        "class": "http://purl.org/spar/fabio/BlogPost",
+                        "labels": {
+                            "en": "blog post"
+                        },
+                        "defined_in": "http://purl.org/spar/fabio"
+                    },
+                    "identifiers": [
+                        {
+                            "scheme": "doi",
+                            "value": "10.82169/9pnj-35bm"
+                        }
+                    ],
+                    "dates": {
+                        "publication": "2026-04-30T19:05:00+00:00",
+                        "modified": "2026-05-02T07:39:31+00:00"
+                    },
+                    "access_rights": {
+                        "status": "open"
+                    },
+                    "url": "https://blog.ehri-project.eu/2026/04/30/scholars-path-through-fragmentation/",
+                    "biblio": {
+                        "in": "https://blog.ehri-project.eu",
+                        "hosting_data_source": "https://blog.ehri-project.eu#datasource"
+                    }
+                }
+            ],
+            "relevant_organisations": [
+                "https://portal.ehri-project.eu/institutions/il-002798"
+            ]
+        },
+        {
+            "entity_type": "person",
+            "local_identifier": "https://blog.ehri-project.eu/author/barnabas_balint/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/author/barnabas_balint/"
+                }
+            ],
+            "given_name": "Barnabas",
+            "family_name": "Balint",
+            "name": "Barnabas Balint"
+        },
+        {
+            "entity_type": "person",
+            "local_identifier": "https://blog.ehri-project.eu/author/alexander-kruglov/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/author/alexander-kruglov/"
+                }
+            ],
+            "given_name": "Alexander",
+            "family_name": "Kruglov",
+            "name": "Alexander Kruglov",
+            "affiliations": [
+                {
+                    "affiliation": "https://portal.ehri-project.eu/institutions/ua-003297",
+                    "role": "scientific advisor"
+                }
+            ]
+        },
+        {
+            "entity_type": "person",
+            "local_identifier": "https://blog.ehri-project.eu/author/olga-stefan/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/author/olga-stefan/"
+                }
+            ],
+            "given_name": "Olga",
+            "family_name": "Ştefan",
+            "name": "Olga Ştefan",
+            "affiliations": [
+                {
+                    "affiliation": "https://ror.org/022kvet57",
+                    "role": "doctoral candidate"
+                }
+            ]
+        },
+        {
+            "entity_type": "person",
+            "local_identifier": "https://blog.ehri-project.eu/author/hanna-abakunova/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/author/hanna-abakunova/"
+                }
+            ],
+            "given_name": "Hanna",
+            "family_name": "Abakunova",
+            "name": "Hanna Abakunova",
+            "affiliations": [
+                {
+                    "affiliation": "https://ror.org/0160cpw27",
+                    "role": "affiliate"
+                }
+            ]
+        },
+        {
+            "entity_type": "organisation",
+            "local_identifier": "https://ror.org/00zsk2t64",
+            "identifiers": [
+                {
+                    "scheme": "ror",
+                    "value": "00zsk2t64"
+                }
+            ],
+            "name": "European Holocaust Research Infrastructure",
+            "short_name": "EHRI",
+            "website": "https://www.ehri-project.eu",
+            "country": "NL",
+            "types": [
+                "research infrastructure"
+            ]
+        },
+        {
+            "entity_type": "organisation",
+            "local_identifier": "https://portal.ehri-project.eu/institutions/il-002798",
+            "identifiers": [
+                {
+                    "scheme": "ehri-institution-id",
+                    "value": "il-002798"
+                }
+            ],
+            "name": "ארכיון יד ושם / Yad Vashem Archives",
+            "short_name": "Yad Vashem Archives",
+            "other_names": [
+                "YV Archives"
+            ],
+            "website": "https://www.yadvashem.org/archive.html",
+            "country": "IL",
+            "types": [
+                "archive"
+            ]
+        },
+        {
+            "entity_type": "organisation",
+            "local_identifier": "https://portal.ehri-project.eu/institutions/ru-003205",
+            "identifiers": [
+                {
+                    "scheme": "ehri-institution-id",
+                    "value": "ru-003205"
+                }
+            ],
+            "name": "Государственный архив Российской Федерации (ГАРФ)",
+            "other_names": [
+                "State Archive of the Russian Federation"
+            ],
+            "website": "http://www.statearchive.ru/",
+            "country": "RU",
+            "types": [
+                "archive"
+            ]
+        },
+        {
+            "entity_type": "organisation",
+            "local_identifier": "https://portal.ehri-project.eu/institutions/ua-003297",
+            "identifiers": [
+                {
+                    "scheme": "ehri-institution-id",
+                    "value": "ua-003297"
+                }
+            ],
+            "name": "Український інститут вивчення Голокосту «Ткума»",
+            "other_names": [
+                "Ukrainian Institute for Holocaust Studies “Tkuma”"
+            ],
+            "website": "http://tkuma.dp.ua/en/index.php",
+            "country": "UA",
+            "types": [
+                "research"
+            ]
+        },
+        {
+            "entity_type": "organisation",
+            "local_identifier": "https://ror.org/0160cpw27",
+            "identifiers": [
+                {
+                    "scheme": "ror",
+                    "value": "0160cpw27"
+                }
+            ],
+            "name": "University of Alberta",
+            "country": "CA",
+            "types": [
+                "education"
+            ]
+        },
+        {
+            "entity_type": "organisation",
+            "local_identifier": "https://ror.org/022kvet57",
+            "identifiers": [
+                {
+                    "scheme": "ror",
+                    "value": "022kvet57"
+                }
+            ],
+            "name": "Alexandru Ioan Cuza University",
+            "other_names": [
+                "Universitatea Alexandru Ioan Cuza din Iaşi"
+            ],
+            "country": "RO",
+            "types": [
+                "education"
+            ]
+        },
+        {
+            "entity_type": "venue",
+            "local_identifier": "https://blog.ehri-project.eu",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu"
+                }
+            ],
+            "name": "EHRI Document Blog",
+            "type": "other",
+            "access_rights": {
+                "status": "open",
+                "description": "Freely readable. Posts carry DOIs minted under the 10.82169 prefix and resolved via pids.ehri-project.eu."
+            },
+            "contributions": [
+                {
+                    "by": "https://ror.org/00zsk2t64",
+                    "role": "publisher"
+                }
+            ]
+        },
+        {
+            "entity_type": "datasource",
+            "local_identifier": "https://blog.ehri-project.eu#datasource",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu"
+                }
+            ],
+            "name": "EHRI Document Blog",
+            "persistent_identity_systems": [
+                {
+                    "pid_schemes": [
+                        "doi"
+                    ],
+                    "for": [
+                        "literature"
+                    ]
+                }
+            ],
+            "data_source_classification": "publisher archive",
+            "research_product_types": [
+                "literature",
+                "metadata"
+            ],
+            "audience": [
+                {
+                    "audience_type": "International"
+                }
+            ],
+            "policies": [
+                {
+                    "about": "open access",
+                    "targets": [
+                        "literature"
+                    ],
+                    "documented_at": "https://blog.ehri-project.eu/about/",
+                    "description": "All posts are freely readable. No explicit reuse licence is published; the site states © 2015-2026 EHRI Consortium."
+                }
+            ]
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/nazi-justice-system/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/nazi-justice-system/"
+                }
+            ],
+            "labels": {
+                "en": "Nazi Justice System"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/prisons/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/prisons/"
+                }
+            ],
+            "labels": {
+                "en": "Prisons"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/resistance/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/resistance/"
+                }
+            ],
+            "labels": {
+                "en": "Resistance"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/massacres/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/massacres/"
+                }
+            ],
+            "labels": {
+                "en": "Massacres"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/perpetrator/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/perpetrator/"
+                }
+            ],
+            "labels": {
+                "en": "Perpetrator"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/ukraine/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/ukraine/"
+                }
+            ],
+            "labels": {
+                "en": "Ukraine"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/children/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/children/"
+                }
+            ],
+            "labels": {
+                "en": "Children"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/concentration-camps/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/concentration-camps/"
+                }
+            ],
+            "labels": {
+                "en": "Concentration Camps"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/ghetto/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/ghetto/"
+                }
+            ],
+            "labels": {
+                "en": "Ghetto"
+            }
+        },
+        {
+            "entity_type": "topic",
+            "local_identifier": "https://blog.ehri-project.eu/tag/historiography/",
+            "identifiers": [
+                {
+                    "scheme": "url",
+                    "value": "https://blog.ehri-project.eu/tag/historiography/"
+                }
+            ],
+            "labels": {
+                "en": "Historiography"
+            }
+        }
+    ]
+}
