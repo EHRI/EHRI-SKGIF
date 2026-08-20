@@ -8,10 +8,10 @@ Federated Gateway.
 
 from __future__ import annotations
 
-from typing import Annotated, Any
+from typing import Any
 
-from fastapi import Depends, FastAPI, HTTPException, Query
-from fastapi.responses import JSONResponse
+from flask import Flask, abort, jsonify, request
+from werkzeug.exceptions import HTTPException
 
 from .store import ENTITY_TYPES, Store
 
@@ -19,36 +19,33 @@ JSONLD_MEDIA_TYPE = "application/ld+json"
 
 BLOG_VENUE = "https://blog.ehri-project.eu"
 
-app = FastAPI(
-    title="EHRI SKG-IF demo service",
-    version="0.1.0",
-    description=(
-        "Static SKG-IF v1.0.0 records for the four most recent EHRI Document Blog "
-        "posts. A demo profile, not an authoritative EHRI service."
-    ),
-)
+SERVICE_TITLE = "EHRI SKG-IF demo service"
+
+app = Flask(__name__)
+app.json.sort_keys = False
+app.json.ensure_ascii = False
 
 _store = Store.from_file()
 
 
-def get_store() -> Store:
-    return _store
+@app.errorhandler(HTTPException)
+def handle_http_exception(error: HTTPException):
+    """Errors stay JSON, in the ``{"detail": …}`` shape clients already parse."""
+    return jsonify(detail=error.description), error.code
 
 
-StoreDep = Annotated[Store, Depends(get_store)]
+def jsonld(document: dict[str, Any]):
+    return app.response_class(app.json.dumps(document), mimetype=JSONLD_MEDIA_TYPE)
 
 
-def jsonld(document: dict[str, Any]) -> JSONResponse:
-    return JSONResponse(content=document, media_type=JSONLD_MEDIA_TYPE)
-
-
-@app.get("/", summary="Service description")
-def root(store: StoreDep) -> dict[str, Any]:
+@app.get("/")
+def root() -> dict[str, Any]:
+    """Service description."""
     return {
-        "name": app.title,
+        "name": SERVICE_TITLE,
         "interoperability_framework": "SKG-IF v1.0.0",
         "context": "https://w3id.org/skg-if/context/skg-if.json",
-        "counts": {name: len(store.list(name)) for name in ENTITY_TYPES},
+        "counts": {name: len(_store.list(name)) for name in ENTITY_TYPES},
         "endpoints": [
             "/dump",
             "/entities?type=product",
@@ -66,73 +63,100 @@ def root(store: StoreDep) -> dict[str, Any]:
     }
 
 
-@app.get("/dump", summary="Full SKG-IF JSON-LD document")
-def dump(store: StoreDep) -> JSONResponse:
-    return jsonld(store.as_document(store.entities))
+@app.get("/dump")
+def dump():
+    """Full SKG-IF JSON-LD document."""
+    return jsonld(_store.as_document(_store.entities))
 
 
-@app.get("/entities", summary="List entities, optionally filtered by type")
-def entities(
-    store: StoreDep,
-    type: str | None = Query(default=None, description="SKG-IF entity_type"),
-    limit: int = Query(default=50, ge=1, le=500),
-    offset: int = Query(default=0, ge=0),
-) -> dict[str, Any]:
-    if type is None:
-        selected = store.entities
-    elif type in ENTITY_TYPES:
-        selected = store.list(type)
+@app.get("/entities")
+def entities() -> dict[str, Any]:
+    """List entities, optionally filtered by type."""
+    entity_type = request.args.get("type")
+    if entity_type is None:
+        selected = _store.entities
+    elif entity_type in ENTITY_TYPES:
+        selected = _store.list(entity_type)
     else:
-        raise HTTPException(
-            status_code=400,
-            detail=f"Unknown entity_type {type!r}; expected one of {list(ENTITY_TYPES)}",
+        abort(
+            400,
+            description=(
+                f"Unknown entity_type {entity_type!r}; expected one of {list(ENTITY_TYPES)}"
+            ),
         )
-    return _page(selected, limit, offset)
+    return _page(selected, *_paging())
 
 
-@app.get("/entity", summary="Fetch one entity by local_identifier")
-def entity(store: StoreDep, id: str = Query(description="local_identifier")) -> dict[str, Any]:
-    found = store.get(id)
+@app.get("/entity")
+def entity() -> dict[str, Any]:
+    """Fetch one entity by local_identifier."""
+    identifier = _required_arg("id")
+    found = _store.get(identifier)
     if found is None:
-        raise HTTPException(status_code=404, detail=f"No entity with local_identifier {id!r}")
+        abort(404, description=f"No entity with local_identifier {identifier!r}")
     return found
 
 
-@app.get("/products", summary="List research products")
-def products(
-    store: StoreDep,
-    product_type: str | None = Query(
-        default=None,
-        description="literature | research data | research software | other",
-    ),
-    limit: int = Query(default=50, ge=1, le=500),
-    offset: int = Query(default=0, ge=0),
-) -> dict[str, Any]:
-    return _page(store.products(product_type), limit, offset)
+@app.get("/products")
+def products() -> dict[str, Any]:
+    """List research products."""
+    product_type = request.args.get("product_type")
+    return _page(_store.products(product_type), *_paging())
 
 
-@app.get("/blog-posts", summary="Research products published in the EHRI Document Blog")
-def blog_posts(store: StoreDep) -> dict[str, Any]:
-    selected = [p for p in store.products("literature") if _venue_of(p) == BLOG_VENUE]
+@app.get("/blog-posts")
+def blog_posts() -> dict[str, Any]:
+    """Research products published in the EHRI Document Blog."""
+    selected = [p for p in _store.products("literature") if _venue_of(p) == BLOG_VENUE]
     return _page(selected, limit=len(selected) or 1, offset=0)
 
 
-@app.get("/graph", summary="An entity and everything it directly references")
-def graph(store: StoreDep, id: str = Query(description="local_identifier")) -> JSONResponse:
-    neighbourhood = store.neighbourhood(id)
+@app.get("/graph")
+def graph():
+    """An entity and everything it directly references."""
+    identifier = _required_arg("id")
+    neighbourhood = _store.neighbourhood(identifier)
     if not neighbourhood:
-        raise HTTPException(status_code=404, detail=f"No entity with local_identifier {id!r}")
-    return jsonld(store.as_document(neighbourhood))
+        abort(404, description=f"No entity with local_identifier {identifier!r}")
+    return jsonld(_store.as_document(neighbourhood))
 
 
-@app.get("/search", summary="Substring search over titles, abstracts, labels and names")
-def search(
-    store: StoreDep,
-    q: str = Query(min_length=2),
-    limit: int = Query(default=50, ge=1, le=500),
-    offset: int = Query(default=0, ge=0),
-) -> dict[str, Any]:
-    return _page(store.search(q), limit, offset)
+@app.get("/search")
+def search() -> dict[str, Any]:
+    """Substring search over titles, abstracts, labels and names."""
+    query = _required_arg("q", min_length=2)
+    return _page(_store.search(query), *_paging())
+
+
+def _paging() -> tuple[int, int]:
+    """The ``limit`` and ``offset`` shared by every paged endpoint."""
+    return (
+        _int_arg("limit", default=50, minimum=1, maximum=500),
+        _int_arg("offset", default=0, minimum=0),
+    )
+
+
+def _int_arg(name: str, default: int, minimum: int, maximum: int | None = None) -> int:
+    raw = request.args.get(name)
+    if raw is None:
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        abort(400, description=f"{name} must be an integer, got {raw!r}")
+    if value < minimum or (maximum is not None and value > maximum):
+        bound = f"at least {minimum}" if maximum is None else f"between {minimum} and {maximum}"
+        abort(400, description=f"{name} must be {bound}, got {value}")
+    return value
+
+
+def _required_arg(name: str, min_length: int = 1) -> str:
+    value = request.args.get(name)
+    if value is None:
+        abort(400, description=f"Missing required query parameter {name!r}")
+    if len(value) < min_length:
+        abort(400, description=f"{name} must be at least {min_length} characters long")
+    return value
 
 
 def _page(selected: list[dict[str, Any]], limit: int, offset: int) -> dict[str, Any]:

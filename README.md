@@ -16,8 +16,13 @@ uv sync
 uv run main.py
 ```
 
-The service starts on <http://127.0.0.1:8000>, with interactive API documentation at
-<http://127.0.0.1:8000/docs>.
+The service starts on <http://127.0.0.1:8000>.
+
+It is a WSGI application, so in production it is served by gunicorn:
+
+```bash
+uv run gunicorn -w 4 -b 0.0.0.0:8000 wsgi:application
+```
 
 ## Endpoints
 

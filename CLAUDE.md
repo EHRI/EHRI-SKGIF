@@ -8,7 +8,8 @@ Internal notes for developers and coding agents. User-facing documentation lives
 ```
 data/ehri_demo.jsonld       the entire dataset: @context + @graph
 src/ehri_skgif/store.py     loads and indexes the graph, resolves references
-src/ehri_skgif/app.py       FastAPI routes
+src/ehri_skgif/app.py       Flask routes
+wsgi.py                     gunicorn entry point (`wsgi:application`)
 scripts/verify_sources.py   network re-verification of every source and every citation
 tests/test_api.py           endpoint tests and closed-graph checks
 ```
@@ -99,7 +100,8 @@ title to `titles`.
 
 ## Conventions
 
-- Python 3.12. FastAPI + uvicorn; stdlib only in `scripts/`.
+- Python 3.12. Flask served over WSGI by gunicorn, to match EHRI's other Python
+  applications; stdlib only in `scripts/`.
 - `local_identifier` values are URLs, so endpoints take them as a query parameter
   (`?id=`) rather than a path segment.
 - Tests are offline and must stay that way; network checks belong in

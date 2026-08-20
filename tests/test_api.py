@@ -1,6 +1,4 @@
 import pytest
-from fastapi.testclient import TestClient
-
 from ehri_skgif.app import BLOG_VENUE, app
 from ehri_skgif.store import ENTITY_TYPES, Store
 
@@ -13,7 +11,7 @@ GARF = "https://portal.ehri-project.eu/institutions/ru-003205"
 
 @pytest.fixture(scope="module")
 def client():
-    return TestClient(app)
+    return app.test_client()
 
 
 @pytest.fixture(scope="module")
@@ -41,15 +39,15 @@ def test_no_product_asserts_a_relation_without_an_ehri_item_embed(store):
 
 
 def test_institution_embeds_land_in_relevant_organisations(client):
-    kalinindorf = client.get("/entity", params={"id": KALININDORF_POST}).json()
+    kalinindorf = client.get("/entity", query_string={"id": KALININDORF_POST}).json
     assert kalinindorf["relevant_organisations"] == [GARF]
 
-    ukraine = client.get("/entity", params={"id": UKRAINE_POST}).json()
+    ukraine = client.get("/entity", query_string={"id": UKRAINE_POST}).json
     assert ukraine["relevant_organisations"] == [YAD_VASHEM]
 
 
 def test_posts_without_embeds_carry_no_archival_reference(client):
-    post = client.get("/entity", params={"id": KASSIBER_POST}).json()
+    post = client.get("/entity", query_string={"id": KASSIBER_POST}).json
     assert "relevant_organisations" not in post
     assert "related_products" not in post
 
@@ -66,13 +64,13 @@ def test_dump_is_a_jsonld_document(client):
     response = client.get("/dump")
     assert response.status_code == 200
     assert response.headers["content-type"].startswith("application/ld+json")
-    document = response.json()
+    document = response.json
     assert "https://w3id.org/skg-if/context/skg-if.json" in document["@context"]
     assert document["@graph"]
 
 
 def test_blog_posts_are_literature_in_the_blog_venue(client):
-    results = client.get("/blog-posts").json()["results"]
+    results = client.get("/blog-posts").json["results"]
     assert len(results) == 4
     for post in results:
         assert post["product_type"] == "literature"
@@ -81,7 +79,7 @@ def test_blog_posts_are_literature_in_the_blog_venue(client):
 
 
 def test_translation_is_a_second_manifestation(client):
-    post = client.get("/entity", params={"id": KALININDORF_POST}).json()
+    post = client.get("/entity", query_string={"id": KALININDORF_POST}).json
     assert [m["identifiers"][0]["value"] for m in post["manifestations"]] == [
         "10.82169/3d43-gtxa",
         "10.82169/nyen-609n",
@@ -90,16 +88,16 @@ def test_translation_is_a_second_manifestation(client):
 
 
 def test_entity_lookup_and_404(client):
-    assert client.get("/entity", params={"id": KASSIBER_POST}).status_code == 200
-    assert client.get("/entity", params={"id": "https://example.org/nope"}).status_code == 404
+    assert client.get("/entity", query_string={"id": KASSIBER_POST}).status_code == 200
+    assert client.get("/entity", query_string={"id": "https://example.org/nope"}).status_code == 404
 
 
 def test_unknown_entity_type_is_rejected(client):
-    assert client.get("/entities", params={"type": "archive"}).status_code == 400
+    assert client.get("/entities", query_string={"type": "archive"}).status_code == 400
 
 
 def test_graph_resolves_author_topics_and_organisations(client):
-    document = client.get("/graph", params={"id": KALININDORF_POST}).json()
+    document = client.get("/graph", query_string={"id": KALININDORF_POST}).json
     identifiers = {e["local_identifier"] for e in document["@graph"]}
     assert KALININDORF_POST in identifiers
     assert GARF in identifiers
@@ -109,13 +107,13 @@ def test_graph_resolves_author_topics_and_organisations(client):
 
 
 def test_search_matches_titles_and_abstracts(client):
-    results = client.get("/search", params={"q": "kalinindorf"}).json()["results"]
+    results = client.get("/search", query_string={"q": "kalinindorf"}).json["results"]
     assert {e["local_identifier"] for e in results} == {KALININDORF_POST}
 
 
 def test_paging(client):
-    first = client.get("/entities", params={"limit": 2, "offset": 0}).json()
-    second = client.get("/entities", params={"limit": 2, "offset": 2}).json()
+    first = client.get("/entities", query_string={"limit": 2, "offset": 0}).json
+    second = client.get("/entities", query_string={"limit": 2, "offset": 2}).json
     assert first["total"] == second["total"]
     assert first["results"] != second["results"]
     assert len(first["results"]) == 2
